@@ -17,4 +17,7 @@ Waiter(id, name, orders, salary)\
 Chef(id, name, salary)\
 Order(id, price, customer)\
 Pizza(name, ingredients)\
-Ingredient(name, quantity, measurementUnit)
+Ingredient(name, quantity, measurementUnit)\
+Drink(name,quantity)\
+Cocktail(Drink,ingredients)\
+Soda(Drink)
