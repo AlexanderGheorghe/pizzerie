@@ -13,8 +13,9 @@ Features:\
 PizzeriaService\
 CustomerService\
 Customer(id, name, preferences, allergies, registrationDate, birthDate)\
-Waiter(id, name, orders, salary)\
-Chef(id, name, salary)\
+Staff(id,name,salary)\
+Waiter(Staff, orders)\
+Chef(Staff)\
 Order(id, price, customer)\
 Pizza(name, ingredients)\
 Ingredient(name, quantity, measurementUnit)\
