@@ -10,15 +10,11 @@ Features:\
 -> listIngredients\
 -> checkAvailability\
 -> listStaff\
-Customer(id, name)\
-Staff(id,name,salary)\
-Waiter(Staff, orders)\
+Customer(id,name)\
+Staff(id,name)\
+Waiter(Staff)\
 Chef(Staff)\
 Reservation(customer,date,table)
 Table(id)
 Item(name)\
-Pizza(Item, ingredients)\
-Ingredient(name, quantity, measurementUnit)\
-Drink(Item,quantity)\
-Cocktail(Drink,ingredients)\
-Soda(Drink)
+Pizza(Item)\
