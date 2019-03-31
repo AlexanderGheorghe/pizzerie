@@ -14,7 +14,7 @@ Customer(id,name)\
 Staff(id,name)\
 Waiter(Staff)\
 Chef(Staff)\
-Reservation(customer,date,table)
-Table(id)
+Reservation(customer,date,table)\
+Table(id)\
 Item(name)\
 Pizza(Item)\
