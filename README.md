@@ -10,8 +10,6 @@ Features:\
 -> listIngredients\
 -> checkAvailability\
 -> listStaff\
-PizzeriaService\
-CustomerService\
 Customer(id, name)\
 Staff(id,name,salary)\
 Waiter(Staff, orders)\
