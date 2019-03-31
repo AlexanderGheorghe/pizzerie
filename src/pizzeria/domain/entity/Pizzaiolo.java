@@ -1,4 +1,7 @@
 package pizzeria.domain.entity;
 
-public class Pizzaiolo {
+public class Pizzaiolo extends Staff {
+    public Pizzaiolo(String name) {
+        super(name);
+    }
 }
