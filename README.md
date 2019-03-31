@@ -17,4 +17,4 @@ Chef(Staff)\
 Reservation(customer,date,table)\
 Table(id)\
 Item(name)\
-Pizza(Item)\
+Pizza(Item)
