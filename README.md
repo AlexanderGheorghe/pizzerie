@@ -13,7 +13,7 @@ Features:\
 Customer(id,name)\
 Staff(id,name)\
 Waiter(Staff)\
-Chef(Staff)\
+Pizzaiolo(Staff)\
 Reservation(customer,date,table)\
 Table(id)\
 Item(name)\
