@@ -16,8 +16,9 @@ Waiter(Staff, orders)\
 Chef(Staff)\
 Reservation(customer,date,table)
 Table(id)
-Pizza(name, ingredients)\
+Item(name)\
+Pizza(Item, ingredients)\
 Ingredient(name, quantity, measurementUnit)\
-Drink(name,quantity)\
+Drink(Item,quantity)\
 Cocktail(Drink,ingredients)\
 Soda(Drink)
