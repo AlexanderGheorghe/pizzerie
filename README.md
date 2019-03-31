@@ -9,7 +9,7 @@ Features:\
 -> addPizza\
 -> listIngredients\
 -> checkAvailability\
--> listOrders\
+-> listStaff\
 PizzeriaService\
 CustomerService\
 Customer(id, name, preferences, allergies, registrationDate, birthDate)\
