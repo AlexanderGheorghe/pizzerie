@@ -1,15 +1,15 @@
 # Pizzerie
 Features:\
 -> listPizzas\
+-> listStaff\
+-> listCustomers\
 -> existsByName\
--> listIngredientsOf\
 -> makeReservation\
 -> registerCustomer\
 -> addIngredients\
 -> addPizza\
--> listIngredients\
 -> checkAvailability\
--> listStaff\
+-> getRandomPizza\
 Customer(id,name)\
 Staff(id,name)\
 Waiter(Staff)\
