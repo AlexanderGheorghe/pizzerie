@@ -3,20 +3,19 @@ Features:\
 -> listPizzas\
 -> existsByName\
 -> listIngredientsOf\
--> order\
+-> makeReservation\
 -> registerCustomer\
 -> addIngredients\
 -> addPizza\
 -> listIngredients\
 -> checkAvailability\
--> listOrders\
-PizzeriaService\
-CustomerService\
-Customer(id, name, preferences, allergies, registrationDate, birthDate)\
+-> listStaff\
+Customer(id, name)\
 Staff(id,name,salary)\
 Waiter(Staff, orders)\
 Chef(Staff)\
-Order(id, price, customer)\
+Reservation(customer,date,table)
+Table(id)
 Pizza(name, ingredients)\
 Ingredient(name, quantity, measurementUnit)\
 Drink(name,quantity)\
