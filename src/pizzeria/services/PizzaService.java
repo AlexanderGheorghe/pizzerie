@@ -14,4 +14,18 @@ public class PizzaService {
         Pizza[] pizzas = pizzaRepository.getPizzas();
         return pizzas[x].getName();
     }
+    public void listPizzas(){
+        Pizza[] pizzas = pizzaRepository.getPizzas();
+        for(Pizza pizza : pizzas){
+            System.out.println(pizza.getName());
+        }
+    }
+    public Boolean existsByName(String name){
+        Pizza[] pizzas = pizzaRepository.getPizzas();
+        for(Pizza pizza : pizzas){
+            if(pizza.getName().equals(name))
+                return true;
+        }
+        return false;
+    }
 }

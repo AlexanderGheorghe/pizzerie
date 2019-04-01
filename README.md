@@ -3,11 +3,11 @@ Features:\
 -> listPizzas\
 -> listReservations\
 -> listCustomers\
+-> listReservations\
+-> listTables\
 -> existsByName\
 -> makeReservation\
--> registerCustomer\
--> searchCustomer\
--> addPizza\
+-> getRandomTable\
 -> checkAvailability\
 -> getRandomPizza\
 Customer(id,name)\
