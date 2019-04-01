@@ -6,7 +6,7 @@ Features:\
 -> existsByName\
 -> makeReservation\
 -> registerCustomer\
--> addIngredients\
+-> searchCustomer\
 -> addPizza\
 -> checkAvailability\
 -> getRandomPizza\
