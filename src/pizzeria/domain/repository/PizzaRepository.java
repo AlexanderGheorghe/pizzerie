@@ -1,4 +1,7 @@
 package pizzeria.domain.repository;
 
-public class PizzaRepository {
+import pizzeria.domain.entity.Pizza;
+
+public interface PizzaRepository {
+    Pizza[] getPizzas();
 }

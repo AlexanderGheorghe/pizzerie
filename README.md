@@ -1,7 +1,7 @@
 # Pizzerie
 Features:\
 -> listPizzas\
--> listStaff\
+-> listReservations\
 -> listCustomers\
 -> existsByName\
 -> makeReservation\
