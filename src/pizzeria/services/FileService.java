@@ -10,23 +10,22 @@ import pizzeria.domain.repository.PizzaRepository;
 import pizzeria.domain.repository.ReservationRepository;
 import pizzeria.domain.repository.TableRepository;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.sql.Timestamp;
 import java.util.*;
 
 public class FileService {
-    private ReservationRepository reservationRepository = RepositoryConfig.getInstance().getReservationRepository();
-    private CustomerRepository customerRepository = RepositoryConfig.getInstance().getCustomerRepository();
-    private TableRepository tableRepository = RepositoryConfig.getInstance().getTableRepository();
-    private PizzaRepository pizzaRepository= RepositoryConfig.getInstance().getPizzaRepository();
-    private String dataPath;
+    static private ReservationRepository reservationRepository = RepositoryConfig.getInstance().getReservationRepository();
+    static private CustomerRepository customerRepository = RepositoryConfig.getInstance().getCustomerRepository();
+    static private TableRepository tableRepository = RepositoryConfig.getInstance().getTableRepository();
+    static private PizzaRepository pizzaRepository= RepositoryConfig.getInstance().getPizzaRepository();
+    private static String dataPath;
 
-    public FileService(String dataPath) {
-        this.dataPath = dataPath;
+    public static void setDataPath(String dataPath) {
+        FileService.dataPath = dataPath;
     }
 
-    public void readData() {
+    static public void readData() {
         try {
             File customerData = new File(dataPath+"customers.csv");
             FileInputStream fileInputStream = new FileInputStream(customerData);
@@ -35,9 +34,9 @@ public class FileService {
             int i = 0;
             while (scanner.hasNext()) {
                 String data = scanner.nextLine();
-                i++;
                 String[] splitData = data.split(",");
                 customers.add(new Customer(i, splitData[0] + " " + splitData[1]));
+                i++;
             }
         } catch (FileNotFoundException e) {
             System.out.println(dataPath+"customers.csv not found");
@@ -48,10 +47,8 @@ public class FileService {
             FileInputStream fileInputStream = new FileInputStream(tableData);
             Scanner scanner = new Scanner(fileInputStream);
             HashMap<String, Table> tables = tableRepository.getTables();
-            int i = 0;
             while (scanner.hasNext()) {
                 String data = scanner.nextLine();
-                i++;
                 tables.put(data, new Table(data));
             }
         } catch (FileNotFoundException e) {
@@ -84,13 +81,42 @@ public class FileService {
                 Integer id = Integer.parseInt(splitData[0]);
                 Customer c = customerRepository.getCustomers().get(id);
                 Table t = tableRepository.getTables().get(splitData[1]);
-                Date d = new Date(Integer.parseInt(splitData[2]));
+                Date d = new Date(Long.parseLong(splitData[2]));
                 if(!reservations.containsKey(id))
                     reservations.put(id, new ArrayList<>());
                 reservations.get(id).add(new Reservation(c, t, d));
             }
         } catch (FileNotFoundException e) {
             System.out.println(dataPath+"reservations.csv not found");
+        }
+    }
+
+    static void addReservation(int customerId, String tableName, Date date){
+        try {
+            FileWriter fileWriter = new FileWriter(dataPath+"reservations.csv", true);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+
+            printWriter.println(customerId+","+tableName+","+date.getTime());
+
+            printWriter.flush();
+            printWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void audit(String actionName){
+        try {
+            FileWriter fileWriter = new FileWriter(dataPath+"audit.csv", true);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+            printWriter.println(actionName+","+timestamp);
+
+            printWriter.flush();
+            printWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

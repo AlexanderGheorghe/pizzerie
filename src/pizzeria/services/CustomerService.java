@@ -14,6 +14,7 @@ public class CustomerService {
     private ReservationRepository reservationRepository = RepositoryConfig.getInstance().getReservationRepository();
     public int getNumberOfReservationsOfCustomer(int customerId) {
         TreeMap<Integer, List<Reservation>> reservations = reservationRepository.getReservations();
+        AuditService.audit("get number of reservations of customer " + customerId);
         return reservations.get(customerId).size();
     }
 
@@ -29,6 +30,7 @@ public class CustomerService {
                 result[counter++] = customer.getName();
             }
         }
+        AuditService.audit("search customer " + partialName);
         return result;
     }
 
@@ -58,6 +60,7 @@ public class CustomerService {
     }
 
     public void listCustomers() {
+        AuditService.audit("list customers");
         printCustomers(customerRepository.getCustomers());
     }
 }

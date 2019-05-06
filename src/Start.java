@@ -6,7 +6,9 @@ import java.util.Date;
 public class Start {
     public static void main(String[] args) {
         System.out.println("Welcome to Alex's pizzeria!");
-        FileService fileService = new FileService("data");
+        String dataPath="src/pizzeria/data/";
+        FileService.setDataPath(dataPath);
+        FileService.readData();
         PizzaService pizzaService = new PizzaService();
         CustomerService customerService = new CustomerService();
         ReservationService reservationService = new ReservationService();

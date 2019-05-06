@@ -16,9 +16,12 @@ public class ReservationService {
     private CustomerRepository customerRepository = RepositoryConfig.getInstance().getCustomerRepository();
     private TableRepository tableRepository = RepositoryConfig.getInstance().getTableRepository();
     public void addReservation(int customerId, String tableName, Date date){
+        AuditService.audit("add reservation");
         reservationRepository.addReservation(customerRepository.getCustomers().get(customerId), tableRepository.getTables().get(tableName), date);
+        FileService.addReservation(customerId,tableName,date);
     }
     public void listReservations(){
+        AuditService.audit("list reservations");
         TreeMap<Integer, List<Reservation>> reservations = reservationRepository.getReservations();
         for (List<Reservation> l : reservations.values()) {
             for (Reservation reservation : l) {

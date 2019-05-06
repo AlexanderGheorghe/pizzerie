@@ -1,4 +1,7 @@
 package pizzeria.services;
 
-public class AuditService {
+class AuditService {
+    static void audit(String actionName){
+        FileService.audit(actionName);
+    }
 }

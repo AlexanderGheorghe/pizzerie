@@ -13,6 +13,7 @@ public class PizzaService {
         Random rand = new Random();
         int x = rand.nextInt(pizzaRepository.getPizzas().size());
         List<Pizza> pizzas = pizzaRepository.getPizzas();
+        AuditService.audit("get random pizza");
         return pizzas.get(x).getName();
     }
     public void listPizzas(){
@@ -20,8 +21,10 @@ public class PizzaService {
         for(Pizza pizza : pizzas){
             System.out.println(pizza.getName());
         }
+        AuditService.audit("list pizzas");
     }
     public Boolean existsByName(String name){
+        AuditService.audit("pizza exists by name");
         List<Pizza> pizzas = pizzaRepository.getPizzas();
         for(Pizza pizza : pizzas){
             if(pizza.getName().equals(name))
