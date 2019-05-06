@@ -4,19 +4,19 @@ import pizzeria.configuration.RepositoryConfig;
 import pizzeria.domain.entity.Table;
 import pizzeria.domain.repository.TableRepository;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public class TableService {
     private TableRepository pizzaRepository= RepositoryConfig.getInstance().getTableRepository();
     public String getRandomTable(){
-        Random rand = new Random();
-        Table[] tables = pizzaRepository.getTables();
-        int x = rand.nextInt(tables.length);
-        return tables[x].getName();
+        HashMap<String, Table> tables = pizzaRepository.getTables();
+        return tables.get("Table 1").getName();
     }
     public void listTables(){
-        Table[] tables = pizzaRepository.getTables();
-        for(Table table : tables){
+        HashMap<String, Table> tables = pizzaRepository.getTables();
+        for(Table table : tables.values()){
             System.out.println(table.getName());
         }
     }

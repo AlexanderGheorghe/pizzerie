@@ -1,14 +1,12 @@
 import pizzeria.domain.entity.Customer;
-import pizzeria.services.CustomerService;
-import pizzeria.services.PizzaService;
-import pizzeria.services.ReservationService;
-import pizzeria.services.TableService;
+import pizzeria.services.*;
 
 import java.util.Date;
 
 public class Start {
     public static void main(String[] args) {
         System.out.println("Welcome to Alex's pizzeria!");
+        FileService fileService = new FileService("data");
         PizzaService pizzaService = new PizzaService();
         CustomerService customerService = new CustomerService();
         ReservationService reservationService = new ReservationService();

@@ -2,6 +2,9 @@ package pizzeria.domain.repository;
 
 import pizzeria.domain.entity.Table;
 
+import java.util.HashMap;
+import java.util.List;
+
 public interface TableRepository {
-    Table[] getTables();
+    HashMap<String, Table> getTables();
 }

@@ -6,23 +6,20 @@ import pizzeria.domain.entity.Reservation;
 import pizzeria.domain.repository.CustomerRepository;
 import pizzeria.domain.repository.ReservationRepository;
 
+import java.util.List;
+import java.util.TreeMap;
+
 public class CustomerService {
     private CustomerRepository customerRepository = RepositoryConfig.getInstance().getCustomerRepository();
     private ReservationRepository reservationRepository = RepositoryConfig.getInstance().getReservationRepository();
     public int getNumberOfReservationsOfCustomer(int customerId) {
-        int counter = 0;
-        Reservation[] reservations = reservationRepository.getReservations();
-        for (Reservation reservation : reservations) {
-            if (reservation != null && reservation.getCustomer().getId() == customerId) {
-                counter++;
-            }
-        }
-        return counter;
+        TreeMap<Integer, List<Reservation>> reservations = reservationRepository.getReservations();
+        return reservations.get(customerId).size();
     }
 
     public String[] searchCustomer(String partialName) {
-        Customer[] customers = customerRepository.getCustomers();
-        String[] result = new String[customers.length];
+        List<Customer> customers = customerRepository.getCustomers();
+        String[] result = new String[customers.size()];
         int counter = 0;
         String pattern = createPattern(partialName);
         System.out.println(pattern);
@@ -50,7 +47,7 @@ public class CustomerService {
         return resultBuilder.toString();
     }
 
-    private void printCustomers(Customer[] customers) {
+    private void printCustomers(List<Customer> customers) {
         for (Customer customer : customers) {
             if (customer == null) {
                 System.out.println("--------------------------");
