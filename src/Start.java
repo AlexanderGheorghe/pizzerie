@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class Start {
     public static void main(String[] args) {
+        DatabaseService.getInstance();
         System.out.println("Welcome to Alex's pizzeria!");
         String dataPath="src/pizzeria/data/";
         FileService.setDataPath(dataPath);
