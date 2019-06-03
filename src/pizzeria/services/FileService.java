@@ -111,7 +111,7 @@ public class FileService {
             PrintWriter printWriter = new PrintWriter(fileWriter);
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
-            printWriter.println(actionName+","+timestamp);
+            printWriter.println(actionName+","+timestamp+", "+Thread.currentThread());
 
             printWriter.flush();
             printWriter.close();
